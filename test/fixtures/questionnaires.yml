@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_question: 1
+  second_question: 1
+  third_question: 1
+  fourth_question: 1
+  fifth_question: 1
+  sixth_question: 1
+  seventh_question: 1
+  lecturer: one
+  university_group: one
+  discipline: one
+
+two:
+  first_question: 1
+  second_question: 1
+  third_question: 1
+  fourth_question: 1
+  fifth_question: 1
+  sixth_question: 1
+  seventh_question: 1
+  lecturer: two
+  university_group: two
+  discipline: two
