@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Faculty.destroy_all # 1) Destroys Faculty => and also dependent: 2) Department 3) UniversityGroup
+Discipline.destroy_all
+Lecturer.destroy_all
 
 faculty_1 = Faculty.create!(title: 'Факультет информатики и робототехники', abbreviation: 'ФИРТ')
 faculty_2 = Faculty.create!(title: 'Общенаучный факультет', abbreviation: 'ОНФ')
@@ -58,6 +60,60 @@ discipline_11 = Discipline.create!(title: 'Детали машин')
 discipline_12 = Discipline.create!(title: 'Сопротивление материалов')
 discipline_13 = Discipline.create!(title: 'Газогидродинамика')
 discipline_14 = Discipline.create!(title: 'Инженерная графика')
+
+department_1.lecturers << lecturer_1
+department_1.lecturers << lecturer_2
+department_2.lecturers << lecturer_3
+department_2.lecturers << lecturer_4
+department_3.lecturers << lecturer_5
+department_3.lecturers << lecturer_6
+department_4.lecturers << lecturer_7
+department_4.lecturers << lecturer_8
+department_5.lecturers << lecturer_9
+department_5.lecturers << lecturer_10
+department_6.lecturers << lecturer_11
+department_6.lecturers << lecturer_12
+
+lecturer_1.disciplines << discipline_3
+lecturer_1.disciplines << discipline_7
+lecturer_2.disciplines << discipline_1
+lecturer_2.disciplines << discipline_2
+lecturer_3.disciplines << discipline_4
+lecturer_3.disciplines << discipline_2
+lecturer_4.disciplines << discipline_4
+lecturer_5.disciplines << discipline_6
+lecturer_5.disciplines << discipline_7
+lecturer_6.disciplines << discipline_6
+lecturer_6.disciplines << discipline_5
+lecturer_7.disciplines << discipline_8
+lecturer_7.disciplines << discipline_9
+lecturer_8.disciplines << discipline_10
+lecturer_8.disciplines << discipline_11
+lecturer_9.disciplines << discipline_9
+lecturer_9.disciplines << discipline_11
+lecturer_10.disciplines << discipline_11
+lecturer_10.disciplines << discipline_12
+lecturer_11.disciplines << discipline_12
+lecturer_11.disciplines << discipline_13
+lecturer_12.disciplines << discipline_13
+lecturer_12.disciplines << discipline_14
+
+group_1.lecturers << lecturer_1
+group_1.lecturers << lecturer_2
+group_2.lecturers << lecturer_3
+group_2.lecturers << lecturer_4
+group_3.lecturers << lecturer_5
+group_3.lecturers << lecturer_6
+group_4.lecturers << lecturer_7
+group_4.lecturers << lecturer_8
+group_5.lecturers << lecturer_9
+group_5.lecturers << lecturer_10
+group_6.lecturers << lecturer_11
+group_6.lecturers << lecturer_12
+
+
+
+
 
 
 

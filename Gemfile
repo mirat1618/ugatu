@@ -24,15 +24,10 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 gem 'simple_form'
-
 gem 'haml'
-
 gem 'bootstrap'
-
 gem 'jquery-rails'
-
 gem 'rspec-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
