@@ -4,19 +4,17 @@ class Faculty < ApplicationRecord
   validates :title,
             format: { with: /\A[А-я\-—\s]+\z/, message: 'Используйте кириллические символы/пробел/тире/дефис' },
             uniqueness: {message: 'Факультет с таким названием уже существует в базе данных' },
-            length: { maximum: 200 }
+            length: { maximum: 200, too_long: "Длина введенного названия больше максимальной — %{count}" }
   validates :abbreviation,
             format: { with: /\A[А-я]+\z/, message: 'Используйте только кириллические символы' },
             uniqueness: {message: 'Факультет с такой аббревиатурой уже существует в базе данных' },
-            length: { maximum: 7 }
+            length: { maximum: 15, too_long: "Длина введенной аббревиатуры больше максимальной — %{count}" }
   before_create :normalize
 
   private
     def normalize
-      self.title.capitalize!
       self.title.strip!
+      self.title.capitalize!
       self.title.gsub!(/\s{2,}/, ' ')
-      self.abbreviation.strip!
-      self.abbreviation.gsub!(/\s/, '')
     end
 end

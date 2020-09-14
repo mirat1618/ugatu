@@ -4,6 +4,6 @@ class Questionnaire < ApplicationRecord
   belongs_to :discipline
   validates :first_question, :second_question, :third_question,
             :fourth_question, :fifth_question, :sixth_question,
-            inclusion: 0..5
-  validates :seventh_question, inclusion: 0..4
+            inclusion: { in: 0..5, message: 'Неверное значение' }
+  validates :seventh_question, inclusion: { in: 0..4, message: 'Неверное значение' }
 end

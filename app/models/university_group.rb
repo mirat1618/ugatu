@@ -4,6 +4,6 @@ class UniversityGroup < ApplicationRecord
   has_and_belongs_to_many :lecturers
   validates :title,
             format: { with: /\A[А-я0-9\-]+\z/, message: 'Используйте кириллические символы/цифры/дефис' },
-            uniqueness: true,
-            length: { maximum: 12 }
+            uniqueness: { message: 'Группа с таким названием уже существует в базе данных'},
+            length: { maximum: 12, too_long: "Длина введенного названия больше максимальной — %{count}" }
 end
