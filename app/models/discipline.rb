@@ -6,9 +6,9 @@ class Discipline < ApplicationRecord
   before_create :normalize
 
   private
-  def normalize
-    self.title.capitalize!
-    self.title.strip!
-    self.title.gsub!(/\s{2,}/, '')
-  end
+    def normalize
+      self.title.capitalize!
+      self.title.strip!
+      self.title.gsub!(/\s{2,}/, ' ')
+    end
 end

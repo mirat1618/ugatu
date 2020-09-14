@@ -13,11 +13,11 @@ class Department < ApplicationRecord
   before_create :normalize
 
   private
-  def normalize
-    self.title.capitalize!
-    self.title.strip!
-    self.title.gsub!(/\s{2,}/, '')
-    self.abbreviation.strip!
-    self.abbreviation.gsub!(/\s/, '')
-  end
+    def normalize
+      self.title.capitalize!
+      self.title.strip!
+      self.title.gsub!(/\s{2,}/, ' ')
+      self.abbreviation.strip!
+      self.abbreviation.gsub!(/\s/, '')
+    end
 end
