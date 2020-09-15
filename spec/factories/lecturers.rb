@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :lecturer do
-    fullname {'Давлетов Финат Ильшатович'}
+    sequence(:fullname, ('А'..'я').cycle) { |n| "Давлетов Финат Ильшатович#{n}" }
   end
 end
