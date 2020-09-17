@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root  action: :welcome, controller: 'site'
   resources :faculties
   post 'get_departments', action: 'get_departments', controller: 'site'
-
+  post 'get_groups', action: 'get_groups', controller: 'site'
 end

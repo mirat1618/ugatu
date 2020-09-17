@@ -1,10 +1,5 @@
 .form-group
-  -# = form_with(url: 'get_departments', method: 'post', remote: true, class: 'form-control form-control-lg') do |f|
-  -#   = f.collection_select(:faculty_id, Faculty.all, :id, :title,
-  -#                                    { prompt: 'Выберите факультет' },
-  -#                                    { onchange: "this.form.submit()" })
-  = form_with(url: 'get_departments', method: 'post', remote: true, class: 'form-control form-control-lg') do |f|
-    = f.collection_select(:faculty_id, Faculty.all, :id, :title, { prompt: 'Выберите факультет' }, { onchange: 'getDepartments(this.form);'} )
-
-  -# = form_tag(get_departments_path, method: 'post', remote: true) do
-  -#   = select_tag 'faculty', options_from_collection_for_select(Faculty.all, "id", "title"), prompt: 'Выберите факультет', onchange: 'this.form.submit()'
+  = form_with(url: get_departments_path, method: 'post', remote: true, class: 'form-control form-control-lg') do |f|
+    = f.collection_select(:faculty_id, Faculty.all, :id, :title,
+                                    { prompt: 'Выберите факультет' },
+                                    { onchange: 'getDepartments(this.form);'} )

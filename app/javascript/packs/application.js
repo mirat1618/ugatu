@@ -10,7 +10,6 @@ require("channels")
 require ("packs/get_departments.js")
 import 'bootstrap'
 
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -18,12 +17,9 @@ import 'bootstrap'
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+// $(function() {
+//     console.log('111');
+// });
 
-
-$(function() {
-    console.log('111');
-
-
-
-
-});
+import $ from 'jquery';
+global.$ = jQuery;

@@ -1,9 +1,17 @@
 class SiteController < ApplicationController
-  skip_before_action :verify_authenticity_token
   def get_departments
-    p params[:faculty_id]
-    puts '11111'
+    faculty_id = params[:faculty_id]
+    if !faculty_id.blank?
+      faculty = Faculty.find(faculty_id)
+      @partial = ApplicationController.render partial: 'site/departments_options', locals: {faculty: faculty}
+    else
+      @partial = ''
+    end
+    puts 'Faculty id: ', params[:faculty_id]
+
     p request.xhr?
+    # @partial = ActionController::Base.renderer.render(partial: 'site/departments_options', locals: {faculty: faculty})
+
     respond_to do |format|
       format.js
     end
@@ -11,7 +19,7 @@ class SiteController < ApplicationController
   end
 
   def get_groups
-    puts params[:department_id]
+
   end
 
   private
