@@ -10,6 +10,7 @@ class Department < ApplicationRecord
             format: { with: /\A[А-я]+\z/, message: 'Используйте только кириллические символы' },
             uniqueness: {message: 'Кафедра с такой аббревиатурой уже существует в базе данных' },
             length: { maximum: 15, too_long: "Длина введенной аббревиатуры больше максимальной — %{count}"}
+  validates :faculty_id, presence: { message: 'Не указан факультет' }
   before_create :normalize
 
   private

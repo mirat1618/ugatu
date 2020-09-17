@@ -10,7 +10,12 @@
   %body
     = render 'shared/navbar'
     .container
+      .row
+        .col.errors
+          &nbsp;
+          - flash.each do |key, value|
+            = value
       = yield
-    = render 'shared/footer'
+      = render 'shared/footer'
 
 

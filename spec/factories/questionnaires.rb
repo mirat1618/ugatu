@@ -10,5 +10,11 @@ FactoryBot.define do
     association :lecturer
     association :university_group
     association :discipline
+
+    after(:build) do |questionnaire|
+      questionnaire.lecturer = create(:lecturer)
+      questionnaire.university_group = create(:university_group)
+      questionnaire.discipline = create(:discipline)
+    end
   end
 end

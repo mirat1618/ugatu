@@ -1,5 +1,0 @@
-.form-group
-  = form_with(url: '/get_groups', method: 'post', class: 'form-control form-control-lg') do |f|
-    = f.collection_select(:department_id, Faculty.find(31).departments, :id, :title,
-                                    { prompt: 'Выберите кафедру' },
-                                    { onchange: "this.form.submit()" })

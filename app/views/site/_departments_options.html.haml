@@ -1,5 +1,5 @@
 .form-group
-  = form_with(url: get_groups_path, method: 'post', class: 'form-control form-control-lg') do |f|
+  = form_with(url: get_university_groups_path, method: 'post', class: 'form-control form-control-lg') do |f|
     = f.collection_select(:department_id, faculty.departments, :id, :title,
                                     { prompt: 'Выберите кафедру' },
-                                    { onchange: 'getGroups();' })
+                                    { onchange: 'getUniversityGroups();' })

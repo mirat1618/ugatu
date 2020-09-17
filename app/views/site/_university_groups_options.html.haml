@@ -1,0 +1,5 @@
+.form-group
+  = form_with(url: get_start_button_path, method: 'post', class: 'form-control form-control-lg') do |f|
+    = f.collection_select(:university_group_id, department.university_groups, :id, :title,
+                                    { prompt: 'Выберите учебную группу' },
+                                    { onchange: "getStartButton();" })

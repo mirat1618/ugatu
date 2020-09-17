@@ -41,6 +41,12 @@ RSpec.describe Department, type: :model do
       expect(@department.errors[:title][0]).to include('больше')
       expect(@department.errors[:abbreviation][0]).to include('больше')
     end
+
+    it 'is not valid without faculty association' do
+      @department.faculty_id = nil
+      expect(@department).to_not be_valid
+      expect(@department.errors[:faculty_id][0]).to include('Не указан')
+    end
   end
 
   describe 'callbacks testing' do

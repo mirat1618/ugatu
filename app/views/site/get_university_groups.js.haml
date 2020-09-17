@@ -1,0 +1,12 @@
+:plain
+  var universityGroupOptions = "#{escape_javascript(@university_groups_options)}";
+  if (universityGroupOptions == '') {
+     $("#universityGroupsOptions").html('');
+     $("#startButton").html('');
+     console.log('Последующие списки после списка кафедр удалены');
+  }
+  else {
+    $("#universityGroupsOptions").html(universityGroupOptions);
+    console.log('Список групп отображен');
+  }
+

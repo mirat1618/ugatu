@@ -1,3 +1,14 @@
 :plain
-  $("#departmentsOptions").html("#{escape_javascript(@partial)}");
+  var departmentsOptions = "#{escape_javascript(@departments_options)}";
+  if (departmentsOptions == '') {
+     $("#departmentsOptions").html('');
+     $("#universityGroupsOptions").html('');
+     $("#startButton").html('');
+     console.log('Последующие списки после списка факультетов удалены');
+  }
+  else {
+    $("#departmentsOptions").html(departmentsOptions);
+    console.log('Список кафедр отображен');
+  }
+
 
