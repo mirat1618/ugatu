@@ -1,4 +1,10 @@
-%h5{class: 'text-center'}
-  Количество преподавателей для учебной группы <b>#{university_group.title}</b>: #{lecturers_count}.
-= button_tag 'Начать тестирование', class: 'btn btn-primary', onclick: 'startTesting();'
+.form-group
+  .row
+    .col{class: 'text-center'}
+      %h5
+        Количество преподавателей для учебной группы <b>#{university_group.title}</b>: #{lecturers_count}.
+.form-group
+  .row
+    .col{class: 'text-center'}
+      = button_tag 'Начать анкетирование', class: 'btn btn-primary btn-lg', onclick: 'startTesting();'
 

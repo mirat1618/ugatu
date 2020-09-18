@@ -6,7 +6,7 @@ FactoryBot.define do
     fourth_question { 3 }
     fifth_question { 4 }
     sixth_question { 5 }
-    seventh_question { 4 }
+    seventh_question { 60 }
     association :lecturer
     association :university_group
     association :discipline

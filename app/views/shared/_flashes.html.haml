@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    &nbsp;
+.row
+  .col-md-3
+  .col-md-6
+    - unless flash.empty?
+      - flash.to_hash.each do |type, message|
+        %div{class: "alert alert-#{type} alert-disimissible fade show" }
+          %button{type: 'button', class: 'close', data: {dismiss: 'alert'}, aria: {label: 'Close'}}
+            %span{aria: {hidden: 'true'}}
+              &times;
+          = message
+  .col-md-3

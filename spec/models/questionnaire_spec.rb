@@ -28,7 +28,7 @@ RSpec.describe Questionnaire, type: :model do
 
     it 'is not valid with values out of range' do
       @questionnaire.second_question = 6
-      @questionnaire.seventh_question = 5
+      @questionnaire.seventh_question = 101
       expect(@questionnaire).to_not be_valid
       expect(@questionnaire.errors[:second_question][0]).to include('значение')
       expect(@questionnaire.errors[:seventh_question][0]).to include('значение')
