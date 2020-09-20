@@ -6,5 +6,7 @@
 .form-group
   .row
     .col{class: 'text-center'}
-      = button_tag 'Начать анкетирование', class: 'btn btn-primary btn-lg', onclick: 'startTesting();'
+      = form_with(url: start_testing_path, method: 'post', remote: true) do |f|
+        = f.hidden_field(:university_group_id, value: university_group.id)
+        = f.submit 'Начать анкетирование', class: 'btn btn-primary btn-lg'
 

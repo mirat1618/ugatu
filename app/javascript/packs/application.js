@@ -8,10 +8,10 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require("packs/get_departments.js")
-require("packs/get_university_groups.js")
-require("packs/get_start_button.js")
-require("packs/show_range_value.js")
+require("packs/get_next_html_select.js")
+require("packs/start_testing.js")
+require("packs/process_questionnaire.js")
+
 import 'bootstrap'
 import $ from 'jquery'; // this two            for making $()                 js.haml
 global.$ = jQuery;      //           lines are                available in

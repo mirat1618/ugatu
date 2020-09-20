@@ -1,73 +1,75 @@
-.row
-  .col{class: 'text-center'}
-    %h3
-      %b
-        = @lecturer.fullname
-%hr
-.row
-  .col
-    = form_for :questionnaire, url: {action: 'create'} do |f|
-      .row
-        .col-md-8.text-justify
-          = label_tag '1. Педагогическое мастерство (ясное и понятное изложение учебного материала, соблюдение логики изложения, умение организовать дискуссию, поддержать интерес к предмету и др.):'
-        .col-md-3.text-center
-          = f.range_field :first_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange1', onchange: 'showRangeValue(1);'
-        .col-md-1.text-muted#rangeValue1
-          = 3
-      .row
-        .col-md-8.text-justify
-          = label_tag '2. Уровень изложения изучаемого предмета (использование современных достижений науки, уровень информативности лекций, использование аудиторного времени по назначению и др.):'
-        .col-md-3.text-center
-          = f.range_field :second_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange2', onchange: 'showRangeValue(2);'
-        .col-md-1.text-muted#rangeValue2
-          = 3
-      .row
-        .col-md-8.text-justify
-          = label_tag '3. Отношение к студентам (доброжелательность и тактичность, заинтересованность в успехах студентов и др.):'
-        .col-md-3.text-center
-          = f.range_field :third_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange3', onchange: 'showRangeValue(3);'
-        .col-md-1.text-muted#rangeValue3
-          = 3
-      .row
-        .col-md-8.text-justify
-          = label_tag '4. Доступность преподавателя для консультаций в процессе внеаудиторной нагрузки преподавателя:'
-        .col-md-3.text-center
-          = f.range_field :fourth_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange4', onchange: 'showRangeValue(4);'
-        .col-md-1.text-muted#rangeValue4
-          = 3
-      .row
-        .col-md-8.text-justify
-          = label_tag '5. Личные качества преподавателя (уровень научной эрудиции, культура речи, терпение и выдержка, интеллигентность и культура поведения, опрятность и др.):'
-        .col-md-3.text-center
-          = f.range_field :fifth_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange5', onchange: 'showRangeValue(5);'
-        .col-md-1.text-muted#rangeValue5
-          = 3
-      .row
-        .col-md-8.text-justify
-          = label_tag '6. Оцените свои знания по изученной дисциплине:'
-        .col-md-3.text-center
-          = f.range_field :sixth_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange6', onchange: 'showRangeValue(6);'
-        .col-md-1.text-muted#rangeValue6
-          = 3
-      .row
-        .col-md-8.text-justify
-          = label_tag '7. Просим указать, какую часть занятий преподавателя, Вы посещали (в %):'
-        .col-md-3.text-center
-          = f.range_field :seventh_question, in: 0..100, step: 5, class: 'form-control-sm',id: 'inputRange7', onchange: 'showRangeValue(7);'
-        .col-md-1.text-muted
-          #rangeValue7
-            = '50%'
-      .row
-        .col-md-8.text-justify
-          = label_tag 'Укажите дисциплину преподавателя:'
-        .col-md-4
-          = f.collection_select(:discipline_id, @disciplines, :id, :title, { prompt: 'Выберите дисциплину' }, {class: 'form-control'})
-      %hr
-      .row
-        .col.text-right
-          = f.hidden_field(:lecturer_id, value: @lecturer.id)
-          = f.hidden_field(:university_group_id, value: @university_group.id)
-          = f.submit 'Отправить', class: 'btn btn-primary btn-lg'
+= render partial: 'form', locals: { lecturer: @lecturer, disciplines: @disciplines, university_group: @university_group }
+
+-#.row
+-#  .col{class: 'text-center'}
+-#    %h3
+-#      %b
+-#        = @lecturer.fullname
+-#%hr
+-#.row
+-#  .col
+-#    = form_for :questionnaire, url: {action: 'create'}, remote: true, html: {id: 'questionnaireForm'} do |f|
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag '1. Педагогическое мастерство (ясное и понятное изложение учебного материала, соблюдение логики изложения, умение организовать дискуссию, поддержать интерес к предмету и др.):'
+-#        .col-md-3.text-center
+-#          = f.range_field :first_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange1', onchange: 'showRangeValue(1);'
+-#        .col-md-1.text-muted#rangeValue1
+-#          = 3
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag '2. Уровень изложения изучаемого предмета (использование современных достижений науки, уровень информативности лекций, использование аудиторного времени по назначению и др.):'
+-#        .col-md-3.text-center
+-#          = f.range_field :second_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange2', onchange: 'showRangeValue(2);'
+-#        .col-md-1.text-muted#rangeValue2
+-#          = 3
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag '3. Отношение к студентам (доброжелательность и тактичность, заинтересованность в успехах студентов и др.):'
+-#        .col-md-3.text-center
+-#          = f.range_field :third_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange3', onchange: 'showRangeValue(3);'
+-#        .col-md-1.text-muted#rangeValue3
+-#          = 3
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag '4. Доступность преподавателя для консультаций в процессе внеаудиторной нагрузки преподавателя:'
+-#        .col-md-3.text-center
+-#          = f.range_field :fourth_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange4', onchange: 'showRangeValue(4);'
+-#        .col-md-1.text-muted#rangeValue4
+-#          = 3
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag '5. Личные качества преподавателя (уровень научной эрудиции, культура речи, терпение и выдержка, интеллигентность и культура поведения, опрятность и др.):'
+-#        .col-md-3.text-center
+-#          = f.range_field :fifth_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange5', onchange: 'showRangeValue(5);'
+-#        .col-md-1.text-muted#rangeValue5
+-#          = 3
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag '6. Оцените свои знания по изученной дисциплине:'
+-#        .col-md-3.text-center
+-#          = f.range_field :sixth_question, in: 0..5, step: 1, class: 'form-control-sm', id: 'inputRange6', onchange: 'showRangeValue(6);'
+-#        .col-md-1.text-muted#rangeValue6
+-#          = 3
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag '7. Просим указать, какую часть занятий преподавателя, Вы посещали (в %):'
+-#        .col-md-3.text-center
+-#          = f.range_field :seventh_question, in: 0..100, step: 5, class: 'form-control-sm',id: 'inputRange7', onchange: 'showRangeValue(7);'
+-#        .col-md-1.text-muted
+-#          #rangeValue7
+-#            = '50%'
+-#      .row
+-#        .col-md-8.text-justify
+-#          = label_tag 'Укажите дисциплину преподавателя:'
+-#        .col-md-4
+-#          = f.collection_select(:discipline_id, @disciplines, :id, :title, { prompt: 'Выберите дисциплину' }, {class: 'form-control'})
+-#      %hr
+-#      .row
+-#        .col.text-right
+-#          = f.hidden_field(:lecturer_id, value: @lecturer.id)
+-#          = f.hidden_field(:university_group_id, value: @university_group.id)
+-#          = f.submit 'Отправить', onClick: 'processQuestionnaire();', class: 'btn btn-primary btn-lg'
 
 
 

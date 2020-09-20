@@ -1,0 +1,12 @@
+:plain
+  if ("#{flash[:danger]}" == '') {
+    $.ajax({
+          url: '/questionnaires/new',
+          type: 'GET',
+          dataType: 'script'
+      });
+  }
+  else {
+    $('#flashes').html("#{j(render('shared/flashes'))}");
+  }
+

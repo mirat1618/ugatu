@@ -1,19 +1,36 @@
 class QuestionnairesController < ApplicationController
   def new
-    @lecturer = Lecturer.find(37)
-    @university_group = UniversityGroup.first
-    @questionnaire = Questionnaire.new
-    @disciplines = @lecturer.disciplines
+    p flash[:danger]
+    if session[:lecturers_ids].empty?
+      @partial = ApplicationController.render partial: 'shared/thank_you'
+    else
+      @questionnaire = Questionnaire.new
+      @lecturer = Lecturer.find(session[:lecturers_ids].first)
+      @university_group = UniversityGroup.find(session[:university_group_id])
+      @disciplines = @lecturer.disciplines
+      @partial = ApplicationController.render partial:'questionnaires/form', locals: {lecturer:  @lecturer,
+                                                                                     disciplines: @disciplines,
+                                                                                     university_group: @university_group,
+                                                                                     questionnaire: @questionnaire
+      }
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def create
+    flash[:danger] = nil
     @questionnaire = Questionnaire.new(questionnaire_params)
-    if @questionnaire.save
-      flash[:success] = 'Спасибо за ответы'
-      redirect_to @questionnaire
-    else
-      flash[:danger] = @questionnaire.errors.full_messages.to_sentence
-      redirect_to action: 'new'
+    respond_to do |format|
+      if @questionnaire.save
+        session[:lecturers_ids].shift
+        format.html { redirect_to action: 'new'}
+        format.js { @response = 'success'}
+      else
+        format.html { redirect_to action: 'new' }
+        format.js { flash[:danger] = @questionnaire.errors.full_messages.to_sentence }
+      end
     end
   end
 

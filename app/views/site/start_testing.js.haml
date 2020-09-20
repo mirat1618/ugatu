@@ -1,0 +1,11 @@
+:plain
+  $("#facultiesOptions").hide();
+  $("#departmentsOptions").hide();
+  $("#universityGroupsOptions").hide();
+  $("#startButton").hide();
+
+  $.ajax({
+        url: '/questionnaires/new',
+        type: 'GET',
+        dataType: 'script'
+    });
