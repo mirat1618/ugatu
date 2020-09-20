@@ -10,11 +10,6 @@
   %body
     = render 'shared/navbar'
     .container
-      .row
-        .col-md-12
-          &nbsp;
-          .row#flashes
-            - unless flash.empty?
-              = render('shared/flashes')
+      = render 'shared/notifications'
       = yield
       = render 'shared/footer'

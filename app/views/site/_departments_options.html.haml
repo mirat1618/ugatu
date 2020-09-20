@@ -1,5 +1,5 @@
 .form-group
-  = form_with(url: 'get_next_html_select', method: 'post', class: 'form-control form-control-lg') do |f|
-    = f.collection_select(:department_id, faculty.departments, :id, :title,
-                                    { prompt: 'Выберите кафедру' },
-                                    { onchange: 'getNextHtmlSelect("department");'})
+  = collection_select(:department, :id, Department.all, :id, :title,
+                                        { prompt: 'Выберите кафедру'},
+                                        { class: 'form-control form-control-lg',
+                                          onchange: 'getNextHtmlSelect("department");'})

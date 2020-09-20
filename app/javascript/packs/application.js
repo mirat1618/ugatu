@@ -9,8 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 require("packs/get_next_html_select.js")
-require("packs/start_testing.js")
-require("packs/process_questionnaire.js")
+require("packs/show_range_value.js")
 
 import 'bootstrap'
 import $ from 'jquery'; // this two            for making $()                 js.haml

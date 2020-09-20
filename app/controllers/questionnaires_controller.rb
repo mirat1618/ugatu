@@ -1,6 +1,5 @@
 class QuestionnairesController < ApplicationController
   def new
-    p flash[:danger]
     if session[:lecturers_ids].empty?
       @partial = ApplicationController.render partial: 'shared/thank_you'
     else
@@ -8,7 +7,7 @@ class QuestionnairesController < ApplicationController
       @lecturer = Lecturer.find(session[:lecturers_ids].first)
       @university_group = UniversityGroup.find(session[:university_group_id])
       @disciplines = @lecturer.disciplines
-      @partial = ApplicationController.render partial:'questionnaires/form', locals: {lecturer:  @lecturer,
+      @partial = ApplicationController.render partial:'questionnaires/form', locals: { lecturer:  @lecturer,
                                                                                      disciplines: @disciplines,
                                                                                      university_group: @university_group,
                                                                                      questionnaire: @questionnaire
@@ -26,7 +25,7 @@ class QuestionnairesController < ApplicationController
       if @questionnaire.save
         session[:lecturers_ids].shift
         format.html { redirect_to action: 'new'}
-        format.js { @response = 'success'}
+        format.js
       else
         format.html { redirect_to action: 'new' }
         format.js { flash[:danger] = @questionnaire.errors.full_messages.to_sentence }

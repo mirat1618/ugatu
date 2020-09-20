@@ -18,6 +18,15 @@ window.getNextHtmlSelect = function(type) {
         }
     }
     else {
+        switch (type) {
+            case 'faculty':
+                $("#universityGroupsOptions").html('');
+                $("#startButton").html('');
+                break;
+            case 'department':
+                $("#startButton").html('');
+                break;
+        }
         $.ajax({
             url: '/get_next_html_select/' + type + '/' + id,
             type: 'POST',
