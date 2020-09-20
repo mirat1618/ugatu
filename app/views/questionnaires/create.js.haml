@@ -5,6 +5,7 @@
           type: 'GET',
           dataType: 'script'
       });
+    $('#flashes').html("#{j(render('shared/flashes'))}");
   }
   else {
     $('#flashes').html("#{j(render('shared/flashes'))}");

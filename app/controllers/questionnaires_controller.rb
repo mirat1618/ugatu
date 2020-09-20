@@ -1,4 +1,5 @@
 class QuestionnairesController < ApplicationController
+  after_action :discard_flash
   def new
     if session[:lecturers_ids].empty?
       @partial = ApplicationController.render partial: 'shared/thank_you'
@@ -19,7 +20,6 @@ class QuestionnairesController < ApplicationController
   end
 
   def create
-    flash[:danger] = nil
     @questionnaire = Questionnaire.new(questionnaire_params)
     respond_to do |format|
       if @questionnaire.save
@@ -39,5 +39,9 @@ class QuestionnairesController < ApplicationController
                                             :third_question, :fourth_question,
                                             :fifth_question, :sixth_question, :seventh_question,
                                             :lecturer_id, :university_group_id, :discipline_id)
+    end
+
+    def discard_flash
+      flash.discard
     end
 end
