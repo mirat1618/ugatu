@@ -3,15 +3,15 @@ class SiteController < ApplicationController
     type = params[:type]
 
     case type
-    when 'faculty'
+    when 'faculty[id]'
       faculty = Faculty.find(params[:id])
       @partial_response = ApplicationController.render partial: 'site/departments_options', locals: { faculty: faculty }
       @partial_layer = '#departmentsOptions'
-    when 'department'
+    when 'department[id]'
       department = Department.find(params[:id])
       @partial_response = ApplicationController.render partial: 'site/university_groups_options', locals: { department: department }
       @partial_layer = '#universityGroupsOptions'
-    when 'university_group'
+    when 'university_group[id]'
       university_group = UniversityGroup.find(params[:id])
       lecturers_count = university_group.lecturers.count
       @partial_response = ApplicationController.render partial: 'site/start_button', locals: { university_group: university_group, lecturers_count: lecturers_count }

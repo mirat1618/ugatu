@@ -2,4 +2,4 @@
   = collection_select(:department, :id, Department.all, :id, :title,
                                         { prompt: 'Выберите кафедру'},
                                         { class: 'form-control form-control-lg',
-                                          onchange: 'getNextHtmlSelect("department");'})
+                                          onchange: 'getNextHtmlSelect(this);'})

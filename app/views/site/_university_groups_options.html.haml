@@ -2,4 +2,4 @@
   = collection_select(:university_group, :id, UniversityGroup.all, :id, :title,
                                         { prompt: 'Выберите учебную группу'},
                                         { class: 'form-control form-control-lg',
-                                          onchange: 'getNextHtmlSelect("university_group");'})
+                                          onchange: 'getNextHtmlSelect(this);'})
