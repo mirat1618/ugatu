@@ -1,0 +1,34 @@
+.row
+  .col
+    %h4 Учебные группы
+.row
+  .col
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th{scope: 'col'}
+            = 'ID'
+          %th{scope: 'col'}
+            = 'Название'
+          %th{scope: 'col'}
+            = 'Факультет'
+          %th{scope: 'col'}
+            = 'Кафедра'
+      %tbody
+        - @university_groups.each do |university_group|
+          %tr
+            %th{scope: 'row'}
+              = university_group.id
+            %td
+              = link_to university_group.title, university_group
+            %td
+              = link_to university_group.faculty.abbreviation, university_group.faculty
+            %td
+              = link_to university_group.department.abbreviation, university_group.department
+            %td
+              = link_to 'Редактировать', edit_university_group_path(university_group)
+            %td
+              = link_to 'Удалить', university_group_path(university_group), method: :delete, data: { confirm: 'Удалить?' }
+        %tr
+          %td{colspan: '5'}
+            = link_to 'Создать', new_university_group_path

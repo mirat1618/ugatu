@@ -1,0 +1,5 @@
+= form_for(discipline) do |f|
+  .form-group
+    = f.text_field(:title, class: 'form-control', placeholder: 'Название')
+  .form-group.text-right
+    = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

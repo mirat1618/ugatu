@@ -1,0 +1,29 @@
+.row
+  .col
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th{scope: 'col'}
+            = 'ID'
+          %th{scope: 'col'}
+            = 'Название'
+          %th{scope: 'col'}
+            = 'Кафедра'
+          %th{scope: 'col'}
+            = 'Группы'
+      %tbody
+        %tr
+          %th{scope: 'row'}
+            = @department.id
+          %td
+            = @department.title
+          %td
+            = @department.faculty.abbreviation
+          %td
+            - @department.university_groups.each do |university_group|
+              %p
+                = link_to university_group.title, university_group
+          %td
+            = link_to 'Редактировать', edit_department_path(@department)
+            %td
+              = link_to 'Удалить', department_path(@department), method: :delete, data: { confirm: 'Удалить?' }

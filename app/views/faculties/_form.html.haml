@@ -1,0 +1,7 @@
+= form_for(faculty) do |f|
+  .form-group
+    = f.text_field(:title, class: 'form-control', placeholder: 'Название')
+  .form-group
+    = f.text_field(:abbreviation, class: 'form-control', placeholder: 'Аббревиатура')
+  .form-group.text-right
+    = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

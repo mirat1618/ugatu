@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :faculties
   resources :questionnaires
   resources :disciplines
+  resources :departments
+  resources :university_groups
+  resources :lecturers
 end

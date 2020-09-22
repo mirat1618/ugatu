@@ -1,0 +1,34 @@
+.row
+  .col
+    %h4 Кафедры
+.row
+  .col
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th{scope: 'col'}
+            = 'ID'
+          %th{scope: 'col'}
+            = 'Название'
+          %th{scope: 'col'}
+            = 'Аббревиатура'
+          %th{scope: 'col'}
+            = 'Факультет'
+      %tbody
+        - @departments.each do |department|
+          %tr
+            %th{scope: 'row'}
+              = department.id
+            %td
+              = link_to department.title, department
+            %td
+              = department.abbreviation
+            %td
+              = link_to department.faculty.abbreviation, department.faculty
+            %td
+              = link_to 'Редактировать', edit_department_path(department)
+            %td
+              = link_to 'Удалить', department_path(department), method: :delete, data: { confirm: 'Удалить?' }
+        %tr
+          %td{colspan: '5'}
+            = link_to 'Создать', new_department_path

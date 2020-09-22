@@ -1,0 +1,10 @@
+= form_for(department) do |f|
+  .form-group
+    = f.text_field(:title, class: 'form-control', placeholder: 'Название')
+  .form-group
+    = f.text_field(:abbreviation, class: 'form-control', placeholder: 'Аббревиатура')
+  .form-group
+    = f.collection_select(:faculty_id, Faculty.all, :id, :title, { prompt: 'Выберите факультет' },
+                                                                 class: 'form-control')
+  .form-group.text-right
+    = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

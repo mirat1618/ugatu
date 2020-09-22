@@ -1,0 +1,5 @@
+= form_for(lecturer) do |f|
+  .form-group
+    = f.text_field(:fullname, class: 'form-control', placeholder: 'ФИО')
+  .form-group.text-right
+    = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

@@ -1,0 +1,26 @@
+.row
+  .col
+    %h4 Преподаватели
+.row
+  .col
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th{scope: 'col'}
+            = 'ID'
+          %th{scope: 'col'}
+            = 'ФИО'
+      %tbody
+        - @lecturers.each do |lecturer|
+          %tr
+            %th{scope: 'row'}
+              = lecturer.id
+            %td
+              = link_to lecturer.fullname, lecturer
+            %td
+              = link_to 'Редактировать', edit_lecturer_path(lecturer)
+            %td
+              = link_to 'Удалить', lecturer_path(lecturer), method: :delete, data: { confirm: 'Удалить?' }
+        %tr
+          %td{colspan: '5'}
+            = link_to 'Создать', new_lecturer_path

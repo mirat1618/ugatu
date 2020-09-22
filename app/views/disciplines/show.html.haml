@@ -1,0 +1,19 @@
+.row
+  .col
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th{scope: 'col'}
+            = 'ID'
+          %th{scope: 'col'}
+            = 'Название'
+      %tbody
+        %tr
+          %th{scope: 'row'}
+            = @discipline.id
+          %td
+            = @discipline.title
+          %td
+            = link_to 'Редактировать', edit_discipline_path(@discipline)
+            %td
+              = link_to 'Удалить', discipline_path(@discipline), method: :delete, data: { confirm: 'Удалить?' }

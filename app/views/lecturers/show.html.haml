@@ -1,0 +1,20 @@
+.row
+  .col
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th{scope: 'col'}
+            = 'ID'
+          %th{scope: 'col'}
+            = 'ФИО'
+      %tbody
+        %tr
+          %th{scope: 'row'}
+            = @lecturer.id
+          %td
+            = @lecturer.fullname
+          %td
+            = link_to 'Редактировать', edit_lecturer_path(@lecturer)
+          %td
+            = link_to 'Удалить', lecturer_path(@lecturer), method: :delete, data: { confirm: 'Удалить?' }
+
