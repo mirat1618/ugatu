@@ -7,16 +7,18 @@ class DepartmentsController < ApplicationController
   def new
     @department = Department.new
   end
+
   def edit
+    @lecturers = Lecturer.all.order('fullname ASC')
   end
 
   def create
-    @department = Department.new(faculty_params)
+    @department = Department.new(department_params)
     if @department.save
       flash[:success] = 'Факультет создан'
       redirect_to @department
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @department.errors.full_messages.to_sentence
       render action: :new
     end
   end
@@ -29,7 +31,7 @@ class DepartmentsController < ApplicationController
       flash[:success] = 'Данные кафедры обновлены'
       redirect_to @department
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @department.errors.full_messages.to_sentence
       redirect_to edit_department_path(@department)
     end
   end
@@ -38,17 +40,17 @@ class DepartmentsController < ApplicationController
     if @department.destroy
       flash[:success] = 'Кафедра удалена'
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @department.errors.full_messages.to_sentence
     end
-    redirect_to edit_department_path(@department)
+    redirect_to departments_path
   end
 
   private
-  def set_department
-    @department = Department.find(params[:id])
-  end
+    def set_department
+      @department = Department.find_by(id: params[:id])
+    end
 
-  def department_params
-    params.require(:department).permit(:title, :abbreviation, :faculty_id)
-  end
+    def department_params
+      params.require(:department).permit(:title, :abbreviation, :faculty_id, lecturer_ids: [])
+    end
 end

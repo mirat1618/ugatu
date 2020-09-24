@@ -1,12 +1,9 @@
+%h5
+  Количество преподавателей для учебной группы <b>#{university_group.title}</b>: #{lecturers_count}.
 .form-group
-  .row
-    .col{class: 'text-center'}
-      %h5
-        Количество преподавателей для учебной группы <b>#{university_group.title}</b>: #{lecturers_count}.
-.form-group
-  .row
-    .col{class: 'text-center'}
-      = form_with(url: start_testing_path, method: 'post', remote: true) do |f|
-        = f.hidden_field(:university_group_id, value: university_group.id)
-        = f.submit 'Начать анкетирование', class: 'btn btn-primary btn-lg'
-
+  = form_with(url: start_testing_path, method: 'post', remote: true) do |f|
+    = f.hidden_field(:university_group_id, value: university_group.id)
+    - if disabled
+      = f.submit 'Начать анкетирование', class: 'btn btn-primary btn-lg', disabled: true
+    - else
+      = f.submit 'Начать анкетирование', class: 'btn btn-primary btn-lg'

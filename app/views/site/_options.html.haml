@@ -1,0 +1,6 @@
+%option
+  = '---'
+- options.each do |option|
+  %option{ value: option.id }
+    = option.title
+

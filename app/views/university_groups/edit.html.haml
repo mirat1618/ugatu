@@ -1,8 +1,23 @@
 .row
   .col
+    = link_to '<< Учебные группы', university_groups_path
+.row
+  .col
     %h4 Редактировать данные учебной группы
 .row
   .col-md-3
   .col-md-6
     = render('form', university_group: @university_group)
   .col-md-3
+%hr
+.row
+  .col
+    %h4 Связанные преподаватели
+.row
+  .col-md-12
+    = form_for(@university_group)  do |f|
+      .form-group#lecturers
+        = render('lecturers', lecturers: @lecturers, university_group: @university_group)
+      .form-group.text-right
+        = f.submit 'Отправить', class: 'btn btn-primary btn-lg'
+

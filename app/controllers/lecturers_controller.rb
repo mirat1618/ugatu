@@ -11,6 +11,9 @@ class LecturersController < ApplicationController
 
 
   def edit
+    @university_groups = UniversityGroup.all.order('title ASC')
+    @departments = Department.all.order('title ASC')
+    @disciplines = Discipline.all.order('title ASC')
   end
 
   def create
@@ -47,11 +50,11 @@ class LecturersController < ApplicationController
   end
 
   private
-  def set_lecturer
-    @lecturer = Lecturer.find(params[:id])
-  end
+    def set_lecturer
+      @lecturer = Lecturer.find_by(id: params[:id])
+    end
 
-  def lecturer_params
-    params.require(:lecturer).permit(:fullname)
-  end
+    def lecturer_params
+      params.require(:lecturer).permit(:fullname, university_group_ids: [], department_ids: [], discipline_ids: [])
+    end
 end

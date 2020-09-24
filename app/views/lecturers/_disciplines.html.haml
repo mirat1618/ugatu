@@ -1,0 +1,8 @@
+%table.table.table-bordered
+  - disciplines.in_groups_of(3, false) do |disciplines_row|
+    %tr
+      - disciplines_row.each do |discipline|
+        %td
+          = check_box_tag("lecturer[discipline_ids][]", discipline.id,
+                 lecturer.discipline_ids.include?(discipline.id))
+          = discipline.title

@@ -1,0 +1,5 @@
+- lecturers.in_groups_of(3) do |lecturer|
+  .form-check
+    = f.check_box(:lecturer_ids, {}, lecturer.id)
+    = lecturer.fullname
+

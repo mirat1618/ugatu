@@ -1,0 +1,8 @@
+%table.table.table-bordered
+  - lecturers.in_groups_of(5, false) do |lecturers_row|
+    %tr
+      - lecturers_row.each do |lecturer|
+        %td
+          = check_box_tag("department[lecturer_ids][]", lecturer.id,
+                 department.lecturer_ids.include?(lecturer.id))
+          = lecturer.fullname

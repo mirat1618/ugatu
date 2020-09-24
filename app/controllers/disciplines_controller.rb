@@ -7,7 +7,9 @@ class DisciplinesController < ApplicationController
   def new
     @discipline = Discipline.new
   end
+
   def edit
+    @lecturers = Lecturer.all.order('fullname ASC')
   end
 
   def create
@@ -16,7 +18,7 @@ class DisciplinesController < ApplicationController
       flash[:success] = 'Дисциплина создана'
       redirect_to @discipline
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @discipline.errors.full_messages.to_sentence
       render action: :new
     end
   end
@@ -29,7 +31,7 @@ class DisciplinesController < ApplicationController
       flash[:success] = 'Данные дисциплины обновлены'
       redirect_to @discipline
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @discipline.errors.full_messages.to_sentence
       redirect_to edit_discipline_path(@discipline)
     end
   end
@@ -38,17 +40,17 @@ class DisciplinesController < ApplicationController
     if @discipline.destroy
       flash[:success] = 'Дисциплина удалена'
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @discipline.errors.full_messages.to_sentence
     end
-    redirect_to edit_discipline_path(@discipline)
+    redirect_to disciplines_path
   end
 
   private
-  def set_discipline
-    @discipline= Discipline.find(params[:id])
-  end
+    def set_discipline
+      @discipline= Discipline.find_by(id: params[:id])
+    end
 
-  def department_params
-    params.require(:discipline).permit(:title)
-  end
+    def discipline_params
+      params.require(:discipline).permit(:title, :lecturer_id, lecturer_ids: [])
+    end
 end

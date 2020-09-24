@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root  action: :welcome, controller: 'site'
   post 'get_next_html_select/:type/(:id)', action: 'get_next_html_select', controller: 'site'
   post 'start_testing', action: 'start_testing', controller: 'site'
+  post 'show_next_options/:entity/(:entity_id)', action: 'show_next_options', controller: 'site'
+  post 'show_start_button', action: 'show_start_button', controller: 'site'
+  post 'show_lecturers_list', action: 'show_lecturers_list', controller: 'site'
   resources :faculties
   resources :questionnaires
   resources :disciplines

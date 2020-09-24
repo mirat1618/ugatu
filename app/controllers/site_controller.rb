@@ -1,24 +1,34 @@
 class SiteController < ApplicationController
-  def get_next_html_select
-    type = params[:type]
+  def show_next_options
+    model = params[:model]
+    model_id = params[:model_id]
+    @parent_form_group_id = params[:parent_form_group_id]
 
-    case type
-    when 'faculty[id]'
-      faculty = Faculty.find(params[:id])
-      @partial_response = ApplicationController.render partial: 'site/departments_options', locals: { faculty: faculty }
-      @partial_layer = '#departmentsOptions'
-    when 'department[id]'
-      department = Department.find(params[:id])
-      @partial_response = ApplicationController.render partial: 'site/university_groups_options', locals: { department: department }
-      @partial_layer = '#universityGroupsOptions'
-    when 'university_group[id]'
-      university_group = UniversityGroup.find(params[:id])
-      lecturers_count = university_group.lecturers.count
-      @partial_response = ApplicationController.render partial: 'site/start_button', locals: { university_group: university_group, lecturers_count: lecturers_count }
-      @partial_layer = '#startButton'
-    else
-      @partial_response = 'Не найдено шаблона для отображения'
+    case model
+    when 'faculty'
+      options = Faculty.find_by(id: model_id).departments
+    when 'department'
+      options = Department.find_by(id: model_id).university_groups
     end
+
+    @options_partial = ApplicationController.render(partial: 'site/options', locals: {
+        options: options
+    })
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_start_button
+    university_group = UniversityGroup.find_by(id: params[:university_group_id])
+    lecturers_count = university_group.lecturers.count
+    disabled = true if lecturers_count == 0
+    @start_button_partial = ApplicationController.render(partial: 'site/start_button', locals: {
+        university_group: university_group,
+        lecturers_count: lecturers_count,
+        disabled: disabled
+    })
 
     respond_to do |format|
       format.js
@@ -27,8 +37,8 @@ class SiteController < ApplicationController
 
   def start_testing
     @university_group = UniversityGroup.find(params[:university_group_id])
-    p session[:lecturers_ids] = @university_group.lecturers.ids
-    p session[:university_group_id] = @university_group.id
+    session[:lecturers_ids] = @university_group.lecturers.ids
+    session[:university_group_id] = @university_group.id
 
     respond_to do |format|
       format.js
@@ -36,7 +46,7 @@ class SiteController < ApplicationController
   end
 
   private
-  def site_params
-    params.require(:site).permit(:faculty_id, :department_id, :university_group_id)
-  end
+    def site_params
+      params.require(:site).permit(:faculty_id, :department_id, :university_group_id)
+    end
 end

@@ -7,7 +7,9 @@ class UniversityGroupsController < ApplicationController
   def new
     @university_group = UniversityGroup.new
   end
+
   def edit
+    @lecturers = Lecturer.all.order('fullname ASC')
   end
 
   def create
@@ -16,7 +18,7 @@ class UniversityGroupsController < ApplicationController
       flash[:success] = 'Учебная группа создана'
       redirect_to @university_group
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @university_group.errors.full_messages.to_sentence
       render action: :new
     end
   end
@@ -25,12 +27,13 @@ class UniversityGroupsController < ApplicationController
   end
 
   def update
+    p university_group_params[:lecturer_ids]
     if @university_group.update(university_group_params)
       flash[:success] = 'Данные учебной группы обновлены'
       redirect_to @university_group
     else
-      flash[:danger] = 'Произошла ошибка'
-      redirect_to edit_university_group_path(@university_group)
+      flash[:danger] = @university_group.errors.full_messages.to_sentence
+      redirect_to university_groups_path
     end
   end
 
@@ -40,15 +43,19 @@ class UniversityGroupsController < ApplicationController
     else
       flash[:danger] = 'Произошла ошибка'
     end
-    redirect_to edit_university_group_path(@university_group)
+    redirect_to university_groups_path
   end
 
   private
-  def set_university_group
-    @university_group = UniversityGroup.find(params[:id])
-  end
+    def insert_faculty(university_group)
+      university_group.faculty = @university_group.department.faculty
+    end
 
-  def university_group_params
-    params.require(:university_group).permit(:title, :faculty_id, :department_id)
-  end
+    def set_university_group
+      @university_group = UniversityGroup.find_by(id: params[:id])
+    end
+
+    def university_group_params
+      params.require(:university_group).permit(:title, :faculty_id, :department_id, lecturer_ids: [])
+    end
 end

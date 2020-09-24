@@ -1,8 +1,13 @@
 = form_for(university_group) do |f|
   .form-group
     = f.text_field(:title, class: 'form-control', placeholder: 'Название')
-  .form-group
+  .form-group#facultiesOptions
+    = f.collection_select(:faculty_id, Faculty.all, :id, :title, { prompt: 'Выберите факультет' },
+                                                                     class: 'form-control',
+                                                                     onchange: "showNextOptions('faculty', this);")
+  .form-group#departmentsOptions
     = f.collection_select(:department_id, Department.all, :id, :title, { prompt: 'Выберите кафедру' },
-                                                                 class: 'form-control')
+                                                                     class: 'form-control',
+                                                                     onchange: "showNextOptions('department', this);")
   .form-group.text-right
     = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

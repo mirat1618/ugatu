@@ -1,8 +1,22 @@
 .row
   .col
+    = link_to '<< Кафедры', departments_path
+.row
+  .col
     %h4 Редактировать данные кафедры
 .row
   .col-md-3
   .col-md-6
     = render('form', department: @department)
   .col-md-3
+%hr
+.row
+  .col
+    %h4 Связанные преподаватели
+.row
+  .col-md-12
+    = form_for(@department)  do |f|
+      .form-group#lecturers
+        = render('lecturers', lecturers: @lecturers, department: @department)
+      .form-group.text-right
+        = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

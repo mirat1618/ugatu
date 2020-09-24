@@ -1,8 +1,22 @@
 .row
   .col
+    = link_to '<< Дисциплины', disciplines_path
+.row
+  .col
     %h4 Редактировать данные дисциплины
 .row
   .col-md-3
   .col-md-6
     = render('form', discipline: @discipline)
   .col-md-3
+%hr
+.row
+  .col
+    %h4 Связанные преподаватели
+.row
+  .col-md-12
+    = form_for(@discipline)  do |f|
+      .form-group#disciplines
+        = render('lecturers', lecturers: @lecturers, discipline: @discipline)
+      .form-group.text-right
+        = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

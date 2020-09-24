@@ -1,21 +1,22 @@
 .row
   .col-md-3
-  .col-md-6#facultiesOptions
-    = render 'faculties_options'
+  .col-md-6
+    .form-group#facultiesOptions
+      = collection_select(:faculty, :id, Faculty.all, :id, :title, { prompt: 'Выберите факультет' },
+                                                                       class: 'form-control form-control-lg',
+                                                                       onchange: "showNextOptions('faculty', this);")
+    .form-group#departmentsOptions
+      = collection_select(:department, :id, Department.all, :id, :title, { prompt: 'Выберите кафедру' },
+                                                                       class: 'form-control form-control-lg',
+                                                                       onchange: "showNextOptions('department', this);")
+    .form-group#universityGroupsOptions
+      = collection_select(:university_group, :id, UniversityGroup.all, :id, :title, { prompt: 'Выберите учебную группу' },
+                                                                       class: 'form-control form-control-lg',
+                                                                       onchange: "showStartButton(this);")
+    .form-group.text-center#startButton
   .col-md-3
-.row
-  .col-md-3
-  .col-md-6#departmentsOptions
-  .col-md-3
-.row
-  .col-md-3
-  .col-md-6#universityGroupsOptions
-  .col-md-3
-.row
-  .col#startButton
 .row
   .col#questionnaireForm
-
 
 
 

@@ -1,0 +1,8 @@
+%table.table.table-bordered
+  - university_groups.in_groups_of(5, false) do |university_groups_row|
+    %tr
+      - university_groups_row.each do |university_group|
+        %td
+          = check_box_tag("lecturer[university_group_ids][]", university_group.id,
+                 lecturer.university_group_ids.include?(university_group.id))
+          = university_group.title

@@ -6,3 +6,36 @@
   .col-md-6
     = render('form', lecturer: @lecturer)
   .col-md-3
+%hr
+.row
+  .col
+    %h4 Связанные группы
+.row
+  .col-md-12
+    = form_for(@lecturer)  do |f|
+      .form-group#universityGroups
+        = render('university_groups', university_groups: @university_groups, lecturer: @lecturer)
+      .form-group.text-right
+        = f.submit 'Отправить', class: 'btn btn-primary btn-lg'
+%hr
+.row
+  .col
+    %h4 Связанные кафедры
+.row
+  .col-md-12
+    = form_for(@lecturer)  do |f|
+      .form-group#departments
+        = render('departments', departments: @departments, lecturer: @lecturer)
+      .form-group.text-right
+        = f.submit 'Отправить', class: 'btn btn-primary btn-lg'
+%hr
+.row
+  .col
+    %h4 Связанные дисциплины
+.row
+  .col-md-12
+    = form_for(@lecturer)  do |f|
+      .form-group#disciplines
+        = render('disciplines', disciplines: @disciplines, lecturer: @lecturer)
+      .form-group.text-right
+        = f.submit 'Отправить', class: 'btn btn-primary btn-lg'

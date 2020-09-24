@@ -9,17 +9,16 @@ class FacultiesController < ApplicationController
     @faculty = Faculty.new
   end
 
-
   def edit
   end
 
   def create
     @faculty = Faculty.new(faculty_params)
-    if @faculty.save
+    if @faculty.create(faculty_params)
       flash[:success] = 'Факультет создан'
       redirect_to @faculty
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @faculty.errors.full_messages.to_sentence
       render action: :new
     end
   end
@@ -28,11 +27,11 @@ class FacultiesController < ApplicationController
   end
 
   def update
-    if @faculty.update
+    if @faculty.update(faculty_params)
       flash[:success] = 'Данные факультета обновлены'
       redirect_to @faculty
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @faculty.errors.full_messages.to_sentence
       redirect_to edit_faculty_path(@faculty)
     end
   end
@@ -41,14 +40,14 @@ class FacultiesController < ApplicationController
     if @faculty.destroy
       flash[:success] = 'Факультет удален'
     else
-      flash[:danger] = 'Произошла ошибка'
+      flash[:danger] = @faculty.errors.full_messages.to_sentence
     end
     redirect_to faculties_path
   end
 
   private
     def set_faculty
-      @faculty = Faculty.find(params[:id])
+      @faculty = Faculty.find_by(id: params[:id])
     end
 
     def faculty_params

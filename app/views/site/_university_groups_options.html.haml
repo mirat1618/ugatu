@@ -1,5 +1,5 @@
 .form-group
-  = collection_select(:university_group, :id, UniversityGroup.all, :id, :title,
+  = collection_select(:university_group, :id, department.university_groups, :id, :title,
                                         { prompt: 'Выберите учебную группу'},
                                         { class: 'form-control form-control-lg',
                                           onchange: 'getNextHtmlSelect(this);'})
