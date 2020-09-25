@@ -17,4 +17,31 @@
             = link_to 'Редактировать', edit_lecturer_path(@lecturer)
           %td
             = link_to 'Удалить', lecturer_path(@lecturer), method: :delete, data: { confirm: 'Удалить?' }
+%hr
+  %h4
+    Статистические данные
+.row
+  .col-md-3
+    .form-group
+      = collection_select(:discipline, :id, @lecturer_disciplines, :id, :title, { prompt: 'Все дисциплины'},
+       { class: 'form-control', onchange: ''})
+  .col-md-3
+    .form-group
+      = select_tag('calculation_type', raw('<option value="average">Среднее</option><option value="median">Медианное</option>'),
+       class: 'form-control')
+  .col-md-6.text-left
+    .form-group
+      = button_tag('Отобразить', class: 'btn btn-primary', onclick: "showStats(#{@lecturer.id});")
+.row
+  .col-md-9#stats
+  .col-md-3#mainPieChart
+.row
+  .col-md-4#firstPieChart
+  .col-md-4#secondPieChart
+  .col-md-4#thirdPieChart
+  .col-md-4#fourthPieChart
+  .col-md-4#fifthPieChart
+  .col-md-4#sixthPieChart
+
+
 

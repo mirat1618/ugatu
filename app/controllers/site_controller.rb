@@ -45,6 +45,78 @@ class SiteController < ApplicationController
     end
   end
 
+  def show_stats
+    calculation_type = params[:calculation_type]
+    lecturer_id = params[:lecturer_id]
+    lecturer = Lecturer.find_by(id: lecturer_id)
+    lecturer_questionnaires = lecturer.questionnaires
+    disciplines = params[:discipline_id] == '' ? lecturer.disciplines.ids : [params[:discipline_id]] # if no particular discipline selected then select all lecturer's disciplines
+
+    calculations = { first_question: [nil, Hash.new(0)], second_question: [nil, Hash.new(0)],
+                     third_question: [nil, Hash.new(0)], fourth_question: [nil, Hash.new(0)],
+                     fifth_question: [nil, Hash.new(0)], sixth_question: [nil, Hash.new(0)],
+                     seventh_question: [nil, Hash.new(0)] }
+
+
+
+    case calculation_type
+    when 'average'
+      calculations.each do |question, value|
+        calculations[question][0] = lecturer_questionnaires.where(discipline_id: disciplines)
+                                                         .average(question)
+                                                         .to_f.round(3)
+      end
+    when 'median'
+      calculations.each do |question, value|
+        calculations[question][0] = lecturer_questionnaires.where(discipline_id: disciplines)
+                                                         .median(question)
+                                                         .to_f.round(3)
+      end
+    end
+
+
+    sum = 0
+    calculations.each do |question, array|
+      next if question == :seventh_question
+      sum += array[0]
+    end
+    average = (sum / 6.0).round(3)
+
+
+    calculations.each do |question, array|
+      lecturer_questionnaires.pluck(question).each do |record_value|
+         calculations[question][1][record_value] += 1
+      end
+    end
+
+    p calculations[:first_question][1]
+
+    @stats_partial = ApplicationController.render(partial: 'lecturers/stats_table', locals: {
+                                                                                    calculations: calculations,
+                                                                                    average: average })
+
+    main_pie_chart_hash = {}
+    calculations.each.with_index(1) do |(question, array), index|
+      next if question == :seventh_question
+      main_pie_chart_hash[index] = array[0]
+    end
+    p main_pie_chart_hash
+    @main_pie_chart = ApplicationController.render(partial: 'lecturers/pie_chart', locals: {
+                                                                                    values_hash: main_pie_chart_hash,
+                                                title: 'Общее', id: 'main'})
+    @other_pie_charts = {}
+    calculations.each.with_index(1) do |(question, array), index|
+      @other_pie_charts[question] = ApplicationController.render(partial: 'lecturers/pie_chart', locals: {
+          values_hash: array[1],
+          title: index, id: "pie#{index}"})
+    end
+    #
+    # p @other_pie_charts[:first_question]
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def site_params
       params.require(:site).permit(:faculty_id, :department_id, :university_group_id)

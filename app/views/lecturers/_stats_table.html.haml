@@ -1,0 +1,48 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th{scope: 'col'}
+        = 'Вопрос'
+      %th{scope: 'col'}
+        = 'Значение'
+      %th{scope: 'col'}
+        = 'Общее'
+    %tr
+      %th{scope: 'col'}
+        = '№1. Педагогическое мастерство'
+      %td
+        = calculations[:first_question][0]
+      %td.align-middle{rowspan: 6}
+        = average
+    %tr
+      %th{scope: 'col'}
+        = '№2. Уровень изложения изучаемого предмета'
+      %td
+        = calculations[:second_question][0]
+    %tr
+      %th{scope: 'col'}
+        = '№3. Отношение к студентам'
+      %td
+        = calculations[:third_question][0]
+    %tr
+      %th{scope: 'col'}
+        = '№4. Доступность преподавателя для консультаций'
+      %td
+        = calculations[:fourth_question][0]
+    %tr
+      %th{scope: 'col'}
+        = '№5. Личные качества преподавателя'
+      %td
+        = calculations[:fifth_question][0]
+    %tr
+      %th{scope: 'col'}
+        = '№6. Собственная оценка знаний'
+      %td
+        = calculations[:sixth_question][0]
+    %tr
+      %th{scope: 'col'}
+        = '№7. Посещаемость (%)'
+      %td
+        = calculations[:seventh_question][0]
+
+

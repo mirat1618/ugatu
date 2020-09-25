@@ -28,6 +28,8 @@ class LecturersController < ApplicationController
   end
 
   def show
+    @lecturer_questionnaires = @lecturer.questionnaires
+    @lecturer_disciplines = @lecturer.disciplines
   end
 
   def update

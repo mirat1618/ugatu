@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_median (0.2.5)
+      activesupport (>= 5)
     activejob (6.0.3.3)
       activesupport (= 6.0.3.3)
       globalid (>= 0.3.6)
@@ -77,6 +79,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartkick (3.4.0)
     childprocess (3.0.0)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
@@ -242,10 +245,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_median
   bootsnap (>= 1.4.2)
   bootstrap
   byebug
   capybara (>= 2.15)
+  chartkick
   factory_bot_rails
   haml
   jbuilder (~> 2.7)

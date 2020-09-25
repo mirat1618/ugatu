@@ -11,6 +11,9 @@ require("channels")
 require("packs/show_next_options.js")
 require("packs/show_range_value.js")
 require("packs/show_start_button.js")
+require("packs/show_stats.js")
+require("chartkick")
+require("chart.js")
 
 import 'bootstrap'
 import $ from 'jquery'; // this two            for making $()                 js.haml

@@ -30,6 +30,8 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rspec-rails'
 gem 'factory_bot_rails'
+gem 'active_median'
+gem 'chartkick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
