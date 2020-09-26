@@ -32,16 +32,19 @@
   .col-md-6.text-left
     .form-group
       = button_tag('Отобразить', class: 'btn btn-primary', onclick: "showStats(#{@lecturer.id});")
+
+
+
 .row
-  .col-md-9#stats
-  .col-md-3#mainPieChart
+  .col-md-6#statsTable
+  .col-md-6#mainPieChart
 .row
-  .col-md-4#firstPieChart
-  .col-md-4#secondPieChart
-  .col-md-4#thirdPieChart
-  .col-md-4#fourthPieChart
-  .col-md-4#fifthPieChart
-  .col-md-4#sixthPieChart
+  .col-md-4#firstQuestionPieChart
+  .col-md-4#secondQuestionPieChart
+  .col-md-4#thirdQuestionPieChart
+  .col-md-4#fourthQuestionPieChart
+  .col-md-4#fifthQuestionPieChart
+  .col-md-4#sixthQuestionPieChart
 
 
 

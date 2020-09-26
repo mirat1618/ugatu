@@ -30,6 +30,7 @@ class LecturersController < ApplicationController
   def show
     @lecturer_questionnaires = @lecturer.questionnaires
     @lecturer_disciplines = @lecturer.disciplines
+    @number_of_questionnaires = @lecturer.questionnaires.count
   end
 
   def update

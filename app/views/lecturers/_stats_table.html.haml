@@ -11,38 +11,40 @@
       %th{scope: 'col'}
         = '№1. Педагогическое мастерство'
       %td
-        = calculations[:first_question][0]
+        = summary_stats[:first_question]
       %td.align-middle{rowspan: 6}
         = average
     %tr
       %th{scope: 'col'}
         = '№2. Уровень изложения изучаемого предмета'
       %td
-        = calculations[:second_question][0]
+        = summary_stats[:second_question]
     %tr
       %th{scope: 'col'}
         = '№3. Отношение к студентам'
       %td
-        = calculations[:third_question][0]
+        = summary_stats[:third_question]
     %tr
       %th{scope: 'col'}
         = '№4. Доступность преподавателя для консультаций'
       %td
-        = calculations[:fourth_question][0]
+        = summary_stats[:fourth_question]
     %tr
       %th{scope: 'col'}
         = '№5. Личные качества преподавателя'
       %td
-        = calculations[:fifth_question][0]
+        = summary_stats[:fifth_question]
     %tr
       %th{scope: 'col'}
         = '№6. Собственная оценка знаний'
       %td
-        = calculations[:sixth_question][0]
+        = summary_stats[:sixth_question]
     %tr
       %th{scope: 'col'}
         = '№7. Посещаемость (%)'
-      %td
-        = calculations[:seventh_question][0]
-
+      %td.text-center{colspan: 2}
+        = summary_stats[:seventh_question]
+    %tr
+      %td.table-active.text-center{colspan: 3}
+        = "Общее количество заполненных анкет — #{number_of_questionnaires}"
 
