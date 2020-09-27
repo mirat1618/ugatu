@@ -46,6 +46,4 @@ class Lecturer < ApplicationRecord
     self.fullname.strip!
     self.fullname.gsub!(/\s{2,}/, ' ')
   end
-
-
 end
