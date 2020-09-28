@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        password: "Пароль"
+        email: "Электронная почта"
+        password_confirmation: "Подтверждение пароля"
+        remember_me: "Запомнить меня"
+  devise:
+    failure:
+      user:
+        invalid: "Неверный пароль или логин"
+        not_found_in_database: "Не найден пользователь"
+        already_authenticated: "Вход уже был выполнен"
+    sessions:
+      user:
+        signed_in: "Вход выполнен"
+        signed_out: "Выход выполнен"
+

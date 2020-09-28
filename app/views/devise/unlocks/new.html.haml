@@ -1,0 +1,21 @@
+.row
+  .col-md-3
+  .col-md-6
+    %h2 Переслать инструкции по разблокировке
+
+    = simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+      = f.error_notification
+      = f.full_error :unlock_token
+
+      .form-inputs
+        = f.input :email,
+          required: true,
+          autofocus: true,
+          input_html: { autocomplete: "email" }
+
+      .form-actions.text-right
+        = f.button :submit, 'Отправить инструкции повторно', class: 'btn btn-primary'
+
+    = render('devise/shared/links')
+  .col-md-3
+

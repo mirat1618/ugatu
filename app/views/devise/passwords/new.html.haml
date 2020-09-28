@@ -1,0 +1,17 @@
+.row
+  .col-md-3
+  .col-md-6
+    %h2 Забыли пароль?
+
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :email,
+          required: true,
+          autofocus: true,
+          input_html: { autocomplete: "email" }
+      .form-actions.text-right
+        = f.button :submit, 'Отправить письмо', class: 'btn btn-primary'
+    = render "devise/shared/links"
+  .col-md-3

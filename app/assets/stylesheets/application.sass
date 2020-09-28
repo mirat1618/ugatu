@@ -1,3 +1,13 @@
 // = require_tree .
 // = require_self
 @import 'bootstrap'
+
+.alert-notice // for outdated flash[:notice] messages from Devise gem (Bootstrap 4 has no 'alert-notice' class)
+  background-color: #d4edda
+  border: 1px solid #c3e6cb
+  border-radius: .25rem
+
+.alert-alert // for outdated flash[:alert] messages from Devise gem (Bootstrap 4 has no 'alert-alert' class)
+  background-color: #f8d7da
+  border: 1px solid #f5c6cb
+  border-radius: .25rem
