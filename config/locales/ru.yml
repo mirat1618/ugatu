@@ -16,4 +16,10 @@ ru:
       user:
         signed_in: "Вход выполнен"
         signed_out: "Выход выполнен"
-
+    registrations:
+      user:
+        signed_up: 'Успешно зарегистрированы'
+    passwords:
+        user:
+          send_instructions: "Инструкции отправлены"
+          updated: "Пароль обновлен"

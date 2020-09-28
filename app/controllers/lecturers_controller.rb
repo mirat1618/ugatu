@@ -55,6 +55,7 @@ class LecturersController < ApplicationController
   private
     def set_lecturer
       @lecturer = Lecturer.find_by(id: params[:id])
+      authorize @lecturer
     end
 
     def lecturer_params

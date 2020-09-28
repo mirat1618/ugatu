@@ -86,6 +86,8 @@ class SiteController < ApplicationController
     end
   end
 
+
+
   private
     def site_params
       params.require(:site).permit(:faculty_id, :department_id, :university_group_id)

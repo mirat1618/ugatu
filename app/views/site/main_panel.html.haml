@@ -1,5 +1,27 @@
 .row
   .col-md-3
-  .col-md-6
-    Main panel
+  .col-md-2
+    = link_to 'Преподаватели', lecturers_path, class: 'main-panel-link'
+  .col-md-2
+    = link_to 'Факультеты', faculties_path, class: 'main-panel-link'
+  .col-md-2
+    = link_to 'Кафедры', departments_path, class: 'main-panel-link'
   .col-md-3
+%hr
+.row
+  .col-md-3
+  .col-md-2
+    = link_to 'Дисциплины', disciplines_path, class: 'main-panel-link'
+  .col-md-2
+    = link_to 'Группы', university_groups_path, class: 'main-panel-link'
+  .col-md-2
+  .col-md-3
+%hr
+.row
+  .col-md-8
+  .col-md-3
+    = current_user.email
+    %sup.role
+      = current_user.role
+  .col-md-1
+    = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'main-panel-link-logout'

@@ -13,10 +13,12 @@
             = @lecturer.id
           %td
             = @lecturer.fullname
-          %td
-            = link_to 'Редактировать', edit_lecturer_path(@lecturer)
-          %td
-            = link_to 'Удалить', lecturer_path(@lecturer), method: :delete, data: { confirm: 'Удалить?' }
+          - if current_user.analyst? || current_user.admin?
+            %td
+              = link_to 'Редактировать', edit_lecturer_path(@lecturer)
+          - if current_user.admin?
+            %td
+              = link_to 'Удалить', lecturer_path(@lecturer), method: :delete, data: { confirm: 'Удалить?' }
 %hr
   %h4
     Статистические данные

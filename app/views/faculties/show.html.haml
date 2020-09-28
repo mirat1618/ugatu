@@ -22,8 +22,10 @@
             - @faculty.departments.each do |department|
               %p
                 = link_to department.title, department
-          %td
-            = link_to 'Редактировать', edit_faculty_path(@faculty)
-          %td
-            = link_to 'Удалить', faculty_path(@faculty), method: :delete, data: { confirm: 'Удалить?' }
+          - if current_user.analyst? || current_user.admin?
+            %td
+              = link_to 'Редактировать', edit_faculty_path(@faculty)
+          - if current_user.admin?
+            %td
+              = link_to 'Удалить', faculty_path(@faculty), method: :delete, data: { confirm: 'Удалить?' }
 

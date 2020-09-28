@@ -25,10 +25,13 @@
               = department.abbreviation
             %td
               = link_to department.faculty.abbreviation, department.faculty
-            %td
-              = link_to 'Редактировать', edit_department_path(department)
-            %td
-              = link_to 'Удалить', department_path(department), method: :delete, data: { confirm: 'Удалить?' }
-        %tr
-          %td{colspan: '5'}
-            = link_to 'Создать', new_department_path
+            - if current_user.analyst? || current_user.admin?
+              %td
+                = link_to 'Редактировать', edit_department_path(department)
+            - if current_user.admin?
+              %td
+                = link_to 'Удалить', department_path(department), method: :delete, data: { confirm: 'Удалить?' }
+        - if current_user.analyst? || current_user.admin?
+          %tr
+            %td{colspan: '5'}
+              = link_to 'Создать', new_department_path

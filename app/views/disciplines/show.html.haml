@@ -16,7 +16,9 @@
             = @discipline.id
           %td
             = @discipline.title
-          %td
-            = link_to 'Редактировать', edit_discipline_path(@discipline)
+          - if current_user.analyst? || current_user.admin?
+            %td
+              = link_to 'Редактировать', edit_discipline_path(@discipline)
+          - if current_user.admin?
             %td
               = link_to 'Удалить', discipline_path(@discipline), method: :delete, data: { confirm: 'Удалить?' }

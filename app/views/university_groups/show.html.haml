@@ -24,7 +24,9 @@
             = link_to @university_group.faculty.abbreviation, @university_group.faculty
           %td
             = link_to @university_group.department.abbreviation, @university_group.department
-          %td
-            = link_to 'Редактировать', edit_university_group_path(@university_group)
+          - if current_user.analyst? || current_user.admin?
+            %td
+              = link_to 'Редактировать', edit_university_group_path(@university_group)
+          - if current_user.admin?
             %td
               = link_to 'Удалить', university_group_path(@university_group), method: :delete, data: { confirm: 'Удалить?' }
