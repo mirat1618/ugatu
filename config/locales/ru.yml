@@ -1,5 +1,15 @@
 ru:
   activerecord:
+    errors:
+      models:
+        questionnaire:
+          attributes:
+            discipline:
+              required: "Не указана дисциплина"
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "Подтверждение пароля не совпадает"
     attributes:
       user:
         password: "Пароль"
@@ -12,6 +22,7 @@ ru:
         invalid: "Неверный пароль или логин"
         not_found_in_database: "Не найден пользователь"
         already_authenticated: "Вход уже был выполнен"
+        unauthenticated: "Вы не идентифицированы"
     sessions:
       user:
         signed_in: "Вход выполнен"
@@ -23,3 +34,4 @@ ru:
         user:
           send_instructions: "Инструкции отправлены"
           updated: "Пароль обновлен"
+

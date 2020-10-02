@@ -1,4 +1,5 @@
 class QuestionnairesController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :destroy]
   after_action :discard_flash
   def new
     if session[:lecturers_ids].empty?

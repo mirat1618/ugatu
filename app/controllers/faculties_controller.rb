@@ -1,4 +1,5 @@
 class FacultiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_faculty, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,7 +15,7 @@ class FacultiesController < ApplicationController
 
   def create
     @faculty = Faculty.new(faculty_params)
-    if @faculty.create(faculty_params)
+    if @faculty.save
       flash[:success] = 'Факультет создан'
       redirect_to @faculty
     else

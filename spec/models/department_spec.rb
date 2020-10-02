@@ -18,6 +18,7 @@ RSpec.describe Department, type: :model do
       expect(department_duplicate.errors[:abbreviation][0]).to include('уже существует')
     end
 
+
     it 'is not valid with Latin characters in title and abbreviation' do
       @department.title = 'Computational Mathematics'
       @department.abbreviation = 'CM'

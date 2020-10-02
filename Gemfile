@@ -28,12 +28,12 @@ gem 'simple_form'
 gem 'haml'
 gem 'bootstrap'
 gem 'jquery-rails'
-gem 'rspec-rails'
-gem 'factory_bot_rails'
 gem 'active_median'
 gem 'chartkick'
 gem 'devise'
 gem 'pundit'
+gem 'fast_jsonapi'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -58,6 +58,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

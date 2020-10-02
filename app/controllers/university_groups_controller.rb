@@ -1,4 +1,5 @@
 class UniversityGroupsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_university_group, only: [:show, :edit, :update, :destroy]
   def index
     @university_groups = UniversityGroup.all
