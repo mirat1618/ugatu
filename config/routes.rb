@@ -18,7 +18,12 @@ Rails.application.routes.draw do
 
   scope module: 'api' do
     namespace 'v1' do
-      resources :lecturers, only: [:show, :index, :create]
+      resources :lecturers, only: [:show, :index]
+      resources :disciplines, only: [:show, :index]
+      resources :faculties, only: [:show, :index]
+      resources :departments, only: [:show, :index]
+      resources :university_groups, only: [:show, :index]
+      resources :questionnaires, only: [:create]
     end
   end
 

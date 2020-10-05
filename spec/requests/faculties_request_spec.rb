@@ -1,11 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe "Faculties", type: :request do
-  include_context 'user sign in'
+  include_context 'user auth token header'
+  include_context 'clean the database'
 
-  it 'shows the list of faculties' do
-    get faculties_path
-    expect(response).to have_content_type :html
-    expect(response).to be_content_type :html # just an alias of the custom matcher
+  before(:all) do
+    @faculty = create(:faculty)
+  end
+
+  it 'returns faculties list' do
+    get v1_faculties_path, headers: @headers
+    expect(response).to have_content_type(:json)
+    expect(response.body).to include('attributes')
+  end
+
+  it 'returns a faculty' do
+    get v1_faculties_path(@lecturer), headers: @headers
+    expect(response).to have_content_type(:json)
+    parsed_response = JSON.parse(response.body)
+    expect(parsed_response["data"][0]["id"]).to eq(@faculty.id.to_s)
   end
 end
