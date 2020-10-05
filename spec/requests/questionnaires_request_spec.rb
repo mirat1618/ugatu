@@ -11,11 +11,11 @@ RSpec.describe "Questionnaires", type: :request do
   end
 
   it 'creates a questionnaire' do
-    params = { questionnaire: { first_question: 1,
-                                second_question: 2,
+    params = { questionnaire: { first_question: 5,
+                                second_question: 4,
                                 third_question: 3,
-                                fourth_question: 4,
-                                fifth_question: 5,
+                                fourth_question: 2,
+                                fifth_question: 1,
                                 sixth_question: 5,
                                 seventh_question: 55,
                                 university_group_id: @university_group.id,

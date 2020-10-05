@@ -1,4 +1,4 @@
-# Since requests test do not clean the database automatically unlike model tests, we have to do it by ourselves
+# Data created in a before(:all) block is NOT rolled back after tests are done
 RSpec.shared_context 'clean the database' do
   after(:all) do
     User.destroy_all
