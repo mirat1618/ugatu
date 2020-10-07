@@ -33,7 +33,7 @@ gem 'chartkick'
 gem 'devise'
 gem 'pundit'
 gem 'fast_jsonapi'
-
+gem 'redis'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
