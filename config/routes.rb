@@ -26,5 +26,5 @@ Rails.application.routes.draw do
       resources :questionnaires, only: [:create]
     end
   end
-
+  mount ActionCable.server => '/cable'
 end

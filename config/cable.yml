@@ -6,5 +6,6 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  url: redis://redistogo:b8a516724d2ecb8aff1aa20359aa6458@soapfish.redistogo.com:9991/
+ %>
 #  channel_prefix: ugatu_production
