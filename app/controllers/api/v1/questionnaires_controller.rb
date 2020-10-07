@@ -4,6 +4,7 @@ class Api::V1::QuestionnairesController < Api::V1::ApiController
 
     if @questionnaire.save
       render json: 'Анкета принята.'
+      ActionCable.server.broadcast 'total_count_channel', total_count: Questionnaire.count
     else
       render json: @questionnaire.errors.full_messages.to_sentence
     end

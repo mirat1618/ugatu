@@ -1,6 +1,7 @@
 class QuestionnairesController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy]
   after_action :discard_flash
+
   def new
     if session[:lecturers_ids].empty?
       @partial = ApplicationController.render partial: 'shared/thank_you'
@@ -27,6 +28,7 @@ class QuestionnairesController < ApplicationController
         session[:lecturers_ids].shift
         format.html { redirect_to action: 'new'}
         format.js
+        ActionCable.server.broadcast 'total_count_channel', total_count: Questionnaire.count
       else
         format.html { redirect_to action: 'new' }
         format.js { flash[:danger] = @questionnaire.errors.full_messages.to_sentence }

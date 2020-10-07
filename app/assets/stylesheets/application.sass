@@ -19,3 +19,22 @@
     color: red
 .role
   color: #007bff
+
+.total-count
+  @extend .text-muted, .small
+  display: inline-block
+
+.blinking-circle
+  display: inline-block
+  width: 5px
+  height: 5px
+  border-radius: 50%
+  background-color: #007bff
+  animation: blinking-online 0.7s infinite alternate
+
+@keyframes blinking-online
+  from
+    opacity: 1
+  to
+    opacity: 0
+

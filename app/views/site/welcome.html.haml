@@ -1,5 +1,6 @@
 .row
   .col-md-3
+    = render('shared/total_count')
   .col-md-6
     .form-group#facultiesOptions
       = collection_select(:faculty, :id, Faculty.all, :id, :title, { prompt: 'Выберите факультет' },

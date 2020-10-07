@@ -1,4 +1,8 @@
 class SiteController < ApplicationController
+  def welcome
+    @total_count = Questionnaire.count
+  end
+
   def show_next_options
     model = params[:model]
     model_id = params[:model_id]
