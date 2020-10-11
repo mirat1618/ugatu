@@ -15,9 +15,5 @@ consumer.subscriptions.create("TotalCountChannel", {
       $('#totalCountNumber').text(data.total_count);
       $('#totalCountRow').slideDown();
     });
-
-
-
-
   }
 });
