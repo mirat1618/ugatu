@@ -7,8 +7,14 @@
 
 **[Описание интерфейса;](interface.md)**
 
-**REST API:**
-  - vjkt
+**REST API (json):**
+  - Возвращение списка (*index*) и сущности (*show*) для:
+    - Факультет (*controllers/api/v1/faculties_controller.rb*);
+    - Кафедра (*controllers/api/v1/departments_controller.rb*);
+    - Преподаватель (*controllers/api/v1/lecturers_controller.rb*);
+    - Группа (*controllers/api/v1/university_groups_controller.rb*);
+  - Создание (*create*) для:
+    - Анкета (*controllers/api/v1/questionnaires_controller.rb*);
   
 **RSpec-тесты**:
 - Модели:
@@ -19,9 +25,12 @@
   -  Анкета: *spec/models/questionnaire_spec.rb*;
   -  Группа: *spec/models/university_group_spec.rb*;
 - Запросы (*spec/requests/\*.rb*);
-- Интеграционный - создание факультета (*spec/features/faculties_spec.rb*);   
-       
-
-
-_ _ _
+- Интеграционный - создание факультета (*spec/features/faculties_spec.rb*).   
+---
+*gems:*
+ - active_median: *расчет медианных значений для ActiveRecord;*
+ - chartkick: *отрисовка круговых диаграмм;*
+ - devise/pundit: *регистрация/аутентификация пользователя, права пользователя;*
+ - fast_jsonapi: *для создания API.*
+- - -
 Ruby 2.7.1; Rails 6.0.3
