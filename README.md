@@ -1,24 +1,44 @@
-# README
+### Ugatu anketa
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+(https://ugatu-anketa.herokuapp.com)  
 
-Things you may want to cover:
+Веб-сайт для проведения анонимного анкетирования студентов на тему «Преподаватель глазами студента».
 
-* Ruby version
+Главная страница:
+![Главная страница](.readme-images/1.png)
 
-* System dependencies
+Указание факультета и кафедры позволяет выбрать соответствующую учебную группу:
+![Выбор факультета и кафедры](.readme-images/2.png)
 
-* Configuration
+Содержание анкеты:
+![Содержание анкеты](.readme-images/3.png)
 
-* Database creation
+Панель управления пользователя:
+![Панель управления](.readme-images/4.png)
 
-* Database initialization
+Роли пользователей:
+- Пользователь (user):
+    - Имеет право просмотра:
+    ![Панель управления](.readme-images/5.png)
+- Аналитик (analyst);
+    - Имеет право просмотра, редактирования и создания:
+    ![Панель управления](.readme-images/16.png)
+    ![Панель управления](.readme-images/23.png)
+- Администратор (admin).
+    - Имеет право просмотра, редактирования, создания, удаления:
+    ![Панель управления](.readme-images/22.png)
 
-* How to run the test suite
+Модели:
+- Факультет (faculty);
+- Кафедра (department);
+- Университетская группа (university group);
+- Преподаватель (lecturer);
+- Дисциплина (discipline);
+- Анкета (questionnaire);
+- Пользователь (user).
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+
+_ _ _
+Ruby 2.7.1; Rails 6.0.3
