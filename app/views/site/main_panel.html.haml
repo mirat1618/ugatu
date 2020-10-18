@@ -18,7 +18,10 @@
   .col-md-3
 %hr
 .row
-  .col-md-8
+  .col-md-3
+    %sup.token.text-muted
+      = "token: #{current_user.auth_token}"
+  .col-md-5
   .col-md-3
     = current_user.email
     %sup.role
