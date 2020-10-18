@@ -89,9 +89,4 @@ class SiteController < ApplicationController
       format.js
     end
   end
-
-  private
-    def site_params
-      params.permit(:faculty_id, :department_id, :university_group_id)
-    end
 end
