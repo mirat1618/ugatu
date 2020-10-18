@@ -24,7 +24,7 @@
   -  Преподаватель (*app/spec/models/lecturer_spec.rb*);
   -  Анкета (*app/spec/models/questionnaire_spec.rb*);
   -  Группа (*app/spec/models/university_group_spec.rb*).
-- Запросы (*app/spec/requests/\*.rb*).
+- Запросы - тестирование API (*app/spec/requests/\*.rb*).
 - Интеграционный - создание факультета (*app/spec/features/faculties_spec.rb*).   
 ---
 *gems:*
