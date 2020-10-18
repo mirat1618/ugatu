@@ -1,4 +1,5 @@
 %table.table.table-bordered
+  = hidden_field_tag "lecturer[university_group_ids][]", nil # default empty array in case nothing will be checked
   - university_groups.in_groups_of(5, false) do |university_groups_row|
     %tr
       - university_groups_row.each do |university_group|
