@@ -50,13 +50,12 @@ class LecturersController < ApplicationController
     else
       flash[:danger] = 'Произошла ошибка'
     end
-    redirect_to lecturer_path
+    redirect_to lecturers_path
   end
 
   private
     def set_lecturer
       @lecturer = Lecturer.find_by(id: params[:id])
-      authorize @lecturer
     end
 
     def lecturer_params
